@@ -113,7 +113,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 16, 2025</li>
+        <li>Last updated: November 17, 2025</li>
     </ul>
 </div>
 
@@ -482,6 +482,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h2 id="endpoints-POSTapi-v1-register">Register</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Register a new user and generate an access token.</p>
@@ -614,7 +615,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-v1-register" data-method="POST"
       data-path="api/v1/register"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -925,6 +926,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="endpoints-GETapi-v1-products">GET /products</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>This endpoint retrieves a paginated list of all products.
@@ -997,22 +999,22 @@ response.json()</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 4,
+            &quot;id&quot;: 9,
             &quot;name&quot;: &quot;Sunt nihil accusantium.&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis. Omnis nostrum aut adipisci quidem nostrum qui commodi. Iure odit et et modi ipsum nostrum omnis. Et consequatur aut dolores enim.&quot;,
             &quot;price&quot;: &quot;778.67&quot;,
             &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/c71cb930-01f3-381c-9172-e1c70e63388f.jpg&quot;,
-            &quot;owner_id&quot;: 7,
-            &quot;created_at&quot;: &quot;2025-11-16 06:11:37&quot;
+            &quot;owner_id&quot;: 12,
+            &quot;created_at&quot;: &quot;2025-11-17 07:05:20&quot;
         },
         {
-            &quot;id&quot;: 5,
+            &quot;id&quot;: 10,
             &quot;name&quot;: &quot;Distinctio eum doloremque id aut.&quot;,
             &quot;description&quot;: &quot;Veniam corporis dolorem mollitia. Nemo odit quia officia est dignissimos. Blanditiis odio veritatis excepturi doloribus delectus fugit. Repudiandae laboriosam est alias tenetur ratione.&quot;,
             &quot;price&quot;: &quot;190.06&quot;,
             &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/067d00f5-e958-3b01-bc80-7e5e367be869.jpg&quot;,
-            &quot;owner_id&quot;: 8,
-            &quot;created_at&quot;: &quot;2025-11-16 06:11:37&quot;
+            &quot;owner_id&quot;: 13,
+            &quot;created_at&quot;: &quot;2025-11-17 07:05:20&quot;
         }
     ]
 }</code>
@@ -1035,7 +1037,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-v1-products" data-method="GET"
       data-path="api/v1/products"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -1094,6 +1096,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="endpoints-POSTapi-v1-products">POST /products</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Stores a new product record in the database, assigned to the authenticated user.
@@ -1106,14 +1109,12 @@ Returns the created product resource.</p>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://my-shade.test/api/v1/products" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"name\": \"Organic Coffee Beans\",
-    \"description\": \"Sourced from high-altitude farms in Colombia.\",
-    \"price\": 19.99
-}"
-</code></pre></div>
+    --form "name=Organic Coffee Beans"\
+    --form "description=Sourced from high-altitude farms in Colombia."\
+    --form "price=19.99"\
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpFC9B.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1122,20 +1123,20 @@ Returns the created product resource.</p>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "name": "Organic Coffee Beans",
-    "description": "Sourced from high-altitude farms in Colombia.",
-    "price": 19.99
-};
+const body = new FormData();
+body.append('name', 'Organic Coffee Beans');
+body.append('description', 'Sourced from high-altitude farms in Colombia.');
+body.append('price', '19.99');
+body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 
@@ -1146,13 +1147,26 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
+            'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
-        'json' =&gt; [
-            'name' =&gt; 'Organic Coffee Beans',
-            'description' =&gt; 'Sourced from high-altitude farms in Colombia.',
-            'price' =&gt; 19.99,
+        'multipart' =&gt; [
+            [
+                'name' =&gt; 'name',
+                'contents' =&gt; 'Organic Coffee Beans'
+            ],
+            [
+                'name' =&gt; 'description',
+                'contents' =&gt; 'Sourced from high-altitude farms in Colombia.'
+            ],
+            [
+                'name' =&gt; 'price',
+                'contents' =&gt; '19.99'
+            ],
+            [
+                'name' =&gt; 'image',
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpFC9B.tmp', 'r')
+            ],
         ],
     ]
 );
@@ -1165,17 +1179,22 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://my-shade.test/api/v1/products'
+files = {
+  'name': (None, 'Organic Coffee Beans'),
+  'description': (None, 'Sourced from high-altitude farms in Colombia.'),
+  'price': (None, '19.99'),
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpFC9B.tmp', 'rb')}
 payload = {
     "name": "Organic Coffee Beans",
     "description": "Sourced from high-altitude farms in Colombia.",
     "price": 19.99
 }
 headers = {
-  'Content-Type': 'application/json',
+  'Content-Type': 'multipart/form-data',
   'Accept': 'application/json'
 }
 
-response = requests.request('POST', url, headers=headers, json=payload)
+response = requests.request('POST', url, headers=headers, files=files)
 response.json()</code></pre></div>
 
 </span>
@@ -1188,13 +1207,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 6,
-        &quot;name&quot;: &quot;Reiciendis quia perspiciatis deserunt.&quot;,
-        &quot;description&quot;: &quot;Et dolores quia maiores. Odit doloribus repellat officiis corporis nesciunt ut ratione iure. Molestiae ut rem est esse. Aut molestiae sunt suscipit doloribus fugiat.&quot;,
-        &quot;price&quot;: &quot;585.02&quot;,
-        &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/36b30183-4d3b-39e5-be12-d5ac53906479.jpg&quot;,
-        &quot;owner_id&quot;: 9,
-        &quot;created_at&quot;: &quot;2025-11-16 06:11:37&quot;
+        &quot;id&quot;: 11,
+        &quot;name&quot;: &quot;Nihil accusantium harum.&quot;,
+        &quot;description&quot;: &quot;Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure. Et et modi ipsum nostrum.&quot;,
+        &quot;price&quot;: &quot;546.11&quot;,
+        &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/d34becdc-c0c1-3b29-91d0-b8358c864cf4.jpg&quot;,
+        &quot;owner_id&quot;: 14,
+        &quot;created_at&quot;: &quot;2025-11-17 07:05:21&quot;
     }
 }</code>
  </pre>
@@ -1230,8 +1249,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-v1-products" data-method="POST"
       data-path="api/v1/products"
-      data-authed="0"
-      data-hasfiles="0"
+      data-authed="1"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-products', this);">
@@ -1267,10 +1286,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-v1-products"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -1321,11 +1340,24 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>The price of the product. Example: <code>19.99</code></p>
         </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="image"                data-endpoint="POSTapi-v1-products"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpFC9B.tmp</code></p>
+        </div>
         </form>
 
                     <h2 id="endpoints-GETapi-v1-products--id-">GET /products/{product}</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Fetches the details for a single product using its ID.</p>
@@ -1396,13 +1428,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 7,
+        &quot;id&quot;: 12,
         &quot;name&quot;: &quot;Et animi quos.&quot;,
         &quot;description&quot;: &quot;Fugiat sunt nihil accusantium harum mollitia. Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
         &quot;price&quot;: &quot;123.27&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/fa253524-dd6a-3fdb-a788-0cabcf134db7.jpg&quot;,
-        &quot;owner_id&quot;: 10,
-        &quot;created_at&quot;: &quot;2025-11-16 06:11:37&quot;
+        &quot;owner_id&quot;: 15,
+        &quot;created_at&quot;: &quot;2025-11-17 07:05:21&quot;
     }
 }</code>
  </pre>
@@ -1433,7 +1465,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-v1-products--id-" data-method="GET"
       data-path="api/v1/products/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -1517,6 +1549,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="endpoints-PUTapi-v1-products--id-">PUT/PATCH /products/{product}</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Modifies the details of an existing product. Requires user to be the owner.</p>
@@ -1528,13 +1561,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
     "http://my-shade.test/api/v1/products/16" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"name\": \"Premium Coffee Beans\",
-    \"price\": 21.5
-}"
-</code></pre></div>
+    --form "name=Premium Coffee Beans"\
+    --form "description=Eius et animi quos velit et."\
+    --form "price=21.5"\
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpFEAF.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1543,19 +1575,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "name": "Premium Coffee Beans",
-    "price": 21.5
-};
+const body = new FormData();
+body.append('name', 'Premium Coffee Beans');
+body.append('description', 'Eius et animi quos velit et.');
+body.append('price', '21.5');
+body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
     method: "PUT",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 
@@ -1566,12 +1599,26 @@ $response = $client-&gt;put(
     $url,
     [
         'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
+            'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
-        'json' =&gt; [
-            'name' =&gt; 'Premium Coffee Beans',
-            'price' =&gt; 21.5,
+        'multipart' =&gt; [
+            [
+                'name' =&gt; 'name',
+                'contents' =&gt; 'Premium Coffee Beans'
+            ],
+            [
+                'name' =&gt; 'description',
+                'contents' =&gt; 'Eius et animi quos velit et.'
+            ],
+            [
+                'name' =&gt; 'price',
+                'contents' =&gt; '21.5'
+            ],
+            [
+                'name' =&gt; 'image',
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpFEAF.tmp', 'r')
+            ],
         ],
     ]
 );
@@ -1584,16 +1631,22 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://my-shade.test/api/v1/products/16'
+files = {
+  'name': (None, 'Premium Coffee Beans'),
+  'description': (None, 'Eius et animi quos velit et.'),
+  'price': (None, '21.5'),
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpFEAF.tmp', 'rb')}
 payload = {
     "name": "Premium Coffee Beans",
+    "description": "Eius et animi quos velit et.",
     "price": 21.5
 }
 headers = {
-  'Content-Type': 'application/json',
+  'Content-Type': 'multipart/form-data',
   'Accept': 'application/json'
 }
 
-response = requests.request('PUT', url, headers=headers, json=payload)
+response = requests.request('PUT', url, headers=headers, files=files)
 response.json()</code></pre></div>
 
 </span>
@@ -1606,13 +1659,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 8,
-        &quot;name&quot;: &quot;Et fugiat sunt.&quot;,
-        &quot;description&quot;: &quot;Harum mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum. Commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur.&quot;,
-        &quot;price&quot;: &quot;730.04&quot;,
-        &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/5c77ccef-fec6-3e83-b8b6-08a373c85aef.jpg&quot;,
-        &quot;owner_id&quot;: 11,
-        &quot;created_at&quot;: &quot;2025-11-16 06:11:37&quot;
+        &quot;id&quot;: 13,
+        &quot;name&quot;: &quot;Modi deserunt aut.&quot;,
+        &quot;description&quot;: &quot;Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum. Omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
+        &quot;price&quot;: &quot;737.91&quot;,
+        &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/b9567dd8-446c-3a6f-8f1a-54673f212a38.jpg&quot;,
+        &quot;owner_id&quot;: 16,
+        &quot;created_at&quot;: &quot;2025-11-17 07:05:21&quot;
     }
 }</code>
  </pre>
@@ -1643,8 +1696,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PUTapi-v1-products--id-" data-method="PUT"
       data-path="api/v1/products/{id}"
-      data-authed="0"
-      data-hasfiles="0"
+      data-authed="1"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-products--id-', this);">
@@ -1684,10 +1737,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-v1-products--id-"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -1740,6 +1793,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The updated product name. Example: <code>Premium Coffee Beans</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-v1-products--id-"
+               value="Eius et animi quos velit et."
+               data-component="body">
+    <br>
+<p>Example: <code>Eius et animi quos velit et.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -1751,11 +1816,24 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>The updated price. Example: <code>21.5</code></p>
         </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="image"                data-endpoint="PUTapi-v1-products--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpFEAF.tmp</code></p>
+        </div>
         </form>
 
                     <h2 id="endpoints-DELETEapi-v1-products--id-">DELETE /products/{product}</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Permanently removes a product from the database. Requires user to be the owner.</p>
@@ -1852,7 +1930,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-DELETEapi-v1-products--id-" data-method="DELETE"
       data-path="api/v1/products/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
