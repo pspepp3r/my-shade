@@ -46,7 +46,7 @@ class ProductController extends BaseController
         $products = $this->productService->getAll();
 
         // Return a collection of resources
-        return Product::collection($products)->response();
+        return ProductResource::collection($products)->response();
     }
 
     /**
@@ -91,7 +91,6 @@ class ProductController extends BaseController
     #[Groups(['Products'])]
     #[Authenticated]
     #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
-    #[UrlParam(name: 'product', type: 'integer', description: 'The ID of the product.', example: 5)]
     #[ResponseFromApiResource(
         name: ProductResource::class,
         model: Product::class,
@@ -117,7 +116,6 @@ class ProductController extends BaseController
     #[Groups(['Products'])]
     #[Authenticated]
     #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
-    #[UrlParam(name: 'product', type: 'integer', description: 'The ID of the product to update.', example: 5)]
     #[BodyParam(name: 'name', type: 'string', required: false, description: 'The updated product name.', example: 'Premium Coffee Beans')]
     #[BodyParam(name: 'price', type: 'number', required: false, description: 'The updated price.', example: 21.50)]
     #[ResponseFromApiResource(
@@ -148,7 +146,6 @@ class ProductController extends BaseController
     #[Groups(['Products'])]
     #[Authenticated]
     #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
-    #[UrlParam(name: 'product', type: 'integer', description: 'The ID of the product to delete.', example: 5)]
     #[Response(
         status: 204,
         description: 'No Content (Product successfully deleted).'

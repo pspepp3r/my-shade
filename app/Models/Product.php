@@ -23,11 +23,14 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'name',
         'description',
         'price',
         'image_path',
     ];
+
+    protected $hidden = ['user_id'];
 
     protected function user()
     {

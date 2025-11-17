@@ -1006,22 +1006,22 @@ response.json()</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 19,
+            &quot;id&quot;: 46,
             &quot;name&quot;: &quot;Sunt nihil accusantium.&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis. Omnis nostrum aut adipisci quidem nostrum qui commodi. Iure odit et et modi ipsum nostrum omnis. Et consequatur aut dolores enim.&quot;,
             &quot;price&quot;: &quot;778.67&quot;,
             &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/c71cb930-01f3-381c-9172-e1c70e63388f.jpg&quot;,
-            &quot;owner_id&quot;: 22,
-            &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
+            &quot;owner_id&quot;: 47,
+            &quot;created_at&quot;: &quot;2025-11-17 12:28:20&quot;
         },
         {
-            &quot;id&quot;: 20,
+            &quot;id&quot;: 47,
             &quot;name&quot;: &quot;Distinctio eum doloremque id aut.&quot;,
             &quot;description&quot;: &quot;Veniam corporis dolorem mollitia. Nemo odit quia officia est dignissimos. Blanditiis odio veritatis excepturi doloribus delectus fugit. Repudiandae laboriosam est alias tenetur ratione.&quot;,
             &quot;price&quot;: &quot;190.06&quot;,
             &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/067d00f5-e958-3b01-bc80-7e5e367be869.jpg&quot;,
-            &quot;owner_id&quot;: 23,
-            &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
+            &quot;owner_id&quot;: 48,
+            &quot;created_at&quot;: &quot;2025-11-17 12:28:20&quot;
         }
     ]
 }</code>
@@ -1147,7 +1147,7 @@ Returns the created product resource.</p>
     --form "name=Organic Coffee Beans"\
     --form "description=Sourced from high-altitude farms in Colombia."\
     --form "price=19.99"\
-    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\php1086.tmp" </code></pre></div>
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpB30F.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1200,7 +1200,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'image',
-                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\php1086.tmp', 'r')
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpB30F.tmp', 'r')
             ],
         ],
     ]
@@ -1218,7 +1218,7 @@ files = {
   'name': (None, 'Organic Coffee Beans'),
   'description': (None, 'Sourced from high-altitude farms in Colombia.'),
   'price': (None, '19.99'),
-  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\php1086.tmp', 'rb')}
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpB30F.tmp', 'rb')}
 payload = {
     "name": "Organic Coffee Beans",
     "description": "Sourced from high-altitude farms in Colombia.",
@@ -1243,13 +1243,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 21,
+        &quot;id&quot;: 48,
         &quot;name&quot;: &quot;Nihil accusantium harum.&quot;,
         &quot;description&quot;: &quot;Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure. Et et modi ipsum nostrum.&quot;,
         &quot;price&quot;: &quot;546.11&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/d34becdc-c0c1-3b29-91d0-b8358c864cf4.jpg&quot;,
-        &quot;owner_id&quot;: 24,
-        &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
+        &quot;owner_id&quot;: 49,
+        &quot;created_at&quot;: &quot;2025-11-17 12:28:20&quot;
     }
 }</code>
  </pre>
@@ -1398,7 +1398,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\php1086.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpB30F.tmp</code></p>
         </div>
         </form>
 
@@ -1416,7 +1416,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://my-shade.test/api/v1/products/16" \
+    --get "http://my-shade.test/api/v1/products/34" \
     --header "Authorization: Bearer your_access_token_here" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1424,7 +1424,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://my-shade.test/api/v1/products/16"
+    "http://my-shade.test/api/v1/products/34"
 );
 
 const headers = {
@@ -1441,7 +1441,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://my-shade.test/api/v1/products/16';
+$url = 'http://my-shade.test/api/v1/products/34';
 $response = $client-&gt;get(
     $url,
     [
@@ -1460,7 +1460,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://my-shade.test/api/v1/products/16'
+url = 'http://my-shade.test/api/v1/products/34'
 headers = {
   'Authorization': 'Bearer your_access_token_here',
   'Content-Type': 'application/json',
@@ -1480,13 +1480,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 22,
-        &quot;name&quot;: &quot;Et animi quos.&quot;,
-        &quot;description&quot;: &quot;Fugiat sunt nihil accusantium harum mollitia. Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
-        &quot;price&quot;: &quot;123.27&quot;,
-        &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/fa253524-dd6a-3fdb-a788-0cabcf134db7.jpg&quot;,
-        &quot;owner_id&quot;: 25,
-        &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
+        &quot;id&quot;: 49,
+        &quot;name&quot;: &quot;Laboriosam praesentium quis adipisci.&quot;,
+        &quot;description&quot;: &quot;Deleniti distinctio eum doloremque id aut. Aliquam veniam corporis dolorem mollitia deleniti nemo. Quia officia est dignissimos neque. Odio veritatis excepturi doloribus delectus fugit qui repudiandae.&quot;,
+        &quot;price&quot;: &quot;379.09&quot;,
+        &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/3637ab3b-64aa-3e77-a6a7-c306cb6519a5.jpg&quot;,
+        &quot;owner_id&quot;: 50,
+        &quot;created_at&quot;: &quot;2025-11-17 12:28:21&quot;
     }
 }</code>
  </pre>
@@ -1591,22 +1591,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-v1-products--id-"
-               value="16"
+               value="34"
                data-component="url">
     <br>
-<p>The ID of the product. Example: <code>16</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>product</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="product"                data-endpoint="GETapi-v1-products--id-"
-               value="5"
-               data-component="url">
-    <br>
-<p>The ID of the product. Example: <code>5</code></p>
+<p>The ID of the product. Example: <code>34</code></p>
             </div>
                     </form>
 
@@ -1624,19 +1612,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://my-shade.test/api/v1/products/16" \
+    "http://my-shade.test/api/v1/products/34" \
     --header "Authorization: Bearer your_access_token_here" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "name=Premium Coffee Beans"\
     --form "description=Eius et animi quos velit et."\
     --form "price=21.5"\
-    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\php1123.tmp" </code></pre></div>
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpB429.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://my-shade.test/api/v1/products/16"
+    "http://my-shade.test/api/v1/products/34"
 );
 
 const headers = {
@@ -1660,7 +1648,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://my-shade.test/api/v1/products/16';
+$url = 'http://my-shade.test/api/v1/products/34';
 $response = $client-&gt;put(
     $url,
     [
@@ -1684,7 +1672,7 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'image',
-                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\php1123.tmp', 'r')
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpB429.tmp', 'r')
             ],
         ],
     ]
@@ -1697,12 +1685,12 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://my-shade.test/api/v1/products/16'
+url = 'http://my-shade.test/api/v1/products/34'
 files = {
   'name': (None, 'Premium Coffee Beans'),
   'description': (None, 'Eius et animi quos velit et.'),
   'price': (None, '21.5'),
-  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\php1123.tmp', 'rb')}
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpB429.tmp', 'rb')}
 payload = {
     "name": "Premium Coffee Beans",
     "description": "Eius et animi quos velit et.",
@@ -1727,13 +1715,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 23,
+        &quot;id&quot;: 50,
         &quot;name&quot;: &quot;Modi deserunt aut.&quot;,
         &quot;description&quot;: &quot;Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum. Omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
         &quot;price&quot;: &quot;737.91&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/b9567dd8-446c-3a6f-8f1a-54673f212a38.jpg&quot;,
-        &quot;owner_id&quot;: 26,
-        &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
+        &quot;owner_id&quot;: 51,
+        &quot;created_at&quot;: &quot;2025-11-17 12:28:21&quot;
     }
 }</code>
  </pre>
@@ -1842,22 +1830,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-v1-products--id-"
-               value="16"
+               value="34"
                data-component="url">
     <br>
-<p>The ID of the product. Example: <code>16</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>product</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="product"                data-endpoint="PUTapi-v1-products--id-"
-               value="5"
-               data-component="url">
-    <br>
-<p>The ID of the product to update. Example: <code>5</code></p>
+<p>The ID of the product. Example: <code>34</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1906,7 +1882,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\php1123.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpB429.tmp</code></p>
         </div>
         </form>
 
@@ -1924,7 +1900,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://my-shade.test/api/v1/products/16" \
+    "http://my-shade.test/api/v1/products/34" \
     --header "Authorization: Bearer your_access_token_here" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1932,7 +1908,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://my-shade.test/api/v1/products/16"
+    "http://my-shade.test/api/v1/products/34"
 );
 
 const headers = {
@@ -1949,7 +1925,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://my-shade.test/api/v1/products/16';
+$url = 'http://my-shade.test/api/v1/products/34';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1968,7 +1944,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://my-shade.test/api/v1/products/16'
+url = 'http://my-shade.test/api/v1/products/34'
 headers = {
   'Authorization': 'Bearer your_access_token_here',
   'Content-Type': 'application/json',
@@ -2088,22 +2064,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-v1-products--id-"
-               value="16"
+               value="34"
                data-component="url">
     <br>
-<p>The ID of the product. Example: <code>16</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>product</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="product"                data-endpoint="DELETEapi-v1-products--id-"
-               value="5"
-               data-component="url">
-    <br>
-<p>The ID of the product to delete. Example: <code>5</code></p>
+<p>The ID of the product. Example: <code>34</code></p>
             </div>
                     </form>
 
