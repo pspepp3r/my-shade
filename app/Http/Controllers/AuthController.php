@@ -8,6 +8,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Services\AuthService;
 use App\Services\RegistrationService;
+use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Attributes\Response;
 use PHPUnit\Metadata\Api\Groups;
@@ -24,6 +25,7 @@ class AuthController
      * Register a new user and generate an access token.
      */
     #[Groups(['Authentication'])]
+    #[Authenticated]
     #[BodyParam(name: 'name', type: 'string', required: true, description: 'The user\'s full name.', example: 'Jane Doe')]
     #[BodyParam(name: 'email', type: 'string', required: true, description: 'The user\'s email address. Must be unique.', example: 'jane.doe@example.com')]
     #[BodyParam(name: 'password', type: 'string', required: true, description: 'The desired password (min 6 characters).', example: 'securePassword123')]

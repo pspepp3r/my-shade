@@ -10,5 +10,8 @@ Route::prefix('/v1')->group(function(){
     Route::post('/register', [AuthController::class, 'register'])->name('api.v1.register');
     Route::post('/login', [AuthController::class, 'login'])->name('api.v1.register');
 
-    Route::apiResource('/products', ProductController::class);
+    Route::middleware('auth:sanctum')->group(function(){
+        Route::apiResource('/products', ProductController::class);
+        Route::post('/logout', [AuthController::class, 'logout'])->name('api.v1.logout');
+    });
 });
