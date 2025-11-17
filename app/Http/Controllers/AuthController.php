@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegistrationRequest;
 use App\Services\AuthService;
-use App\Services\RegistrationService;
-use Knuckles\Scribe\Attributes\Authenticated;
-use Knuckles\Scribe\Attributes\BodyParam;
-use Knuckles\Scribe\Attributes\Response;
 use PHPUnit\Metadata\Api\Groups;
+use App\Http\Requests\LoginRequest;
+use App\Services\RegistrationService;
+use Knuckles\Scribe\Attributes\Header;
+use Knuckles\Scribe\Attributes\Response;
+use Knuckles\Scribe\Attributes\BodyParam;
+use App\Http\Requests\RegistrationRequest;
+use Knuckles\Scribe\Attributes\Authenticated;
 
 class AuthController
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Register
@@ -90,5 +89,39 @@ class AuthController
         // 4. Return success response
         return response()->json($response);
     }
-}
 
+    /**
+     * Logout
+     *
+     * Logout the currently authenticated user by revoking their access token.
+     */
+    #[Groups(['Authentication'])]
+    #[Authenticated]
+    #[Response(
+        content: ['message' => 'Successfully logged out'],
+        status: 200,
+        description: 'User successfully logged out.'
+    )]
+    #[Response(
+        content: ['message' => 'Unauthenticated.'],
+        status: 401,
+        description: 'Authentication required.'
+    )]
+    #[Response(
+        content: ['message' => 'No active session found.'],
+        status: 400,
+        description: 'User is not logged in.'
+    )]
+    #[Response(
+        content: ['message' => 'An error occurred while logging out.'],
+        status: 500,
+        description: 'Server error during logout.'
+    )]
+    #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
+    public function logout(AuthService $authService)
+    {
+        $authService->logoutCurrentUser();
+
+        return response()->json(['message' => 'Successfully logged out']);
+    }
+}

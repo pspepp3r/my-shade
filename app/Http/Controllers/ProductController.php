@@ -15,18 +15,14 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Illuminate\Routing\Controller as BaseController;
+use Knuckles\Scribe\Attributes\Header;
 use Knuckles\Scribe\Attributes\ResponseFromApiResource;
 
 class ProductController extends BaseController
 {
 
     // Inject the service via the constructor for dependency injection
-    public function __construct(protected ProductService $productService)
-    {
-        $this->productService = $productService;
-        // Optionally apply authentication middleware here
-        $this->middleware('auth:sanctum');
-    }
+    public function __construct(protected ProductService $productService) {}
 
     /**
      * GET /products
@@ -36,6 +32,8 @@ class ProductController extends BaseController
      */
     #[Groups(['Products'])]
     #[Authenticated]
+    #[UrlParam(name: 'page', type: 'integer', description: 'The page number for pagination.', example: 1)]
+    #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
     #[ResponseFromApiResource(
         name: ProductResource::class,
         model: Product::class,
@@ -59,6 +57,7 @@ class ProductController extends BaseController
      */
     #[Groups(['Products'])]
     #[Authenticated]
+    #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
     #[BodyParam(name: 'name', type: 'string', required: true, description: 'The product name.', example: 'Organic Coffee Beans')]
     #[BodyParam(name: 'description', type: 'string', required: false, description: 'A detailed description of the product.', example: 'Sourced from high-altitude farms in Colombia.')]
     #[BodyParam(name: 'price', type: 'number', required: true, description: 'The price of the product.', example: 19.99)]
@@ -91,6 +90,7 @@ class ProductController extends BaseController
      */
     #[Groups(['Products'])]
     #[Authenticated]
+    #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
     #[UrlParam(name: 'product', type: 'integer', description: 'The ID of the product.', example: 5)]
     #[ResponseFromApiResource(
         name: ProductResource::class,
@@ -116,6 +116,7 @@ class ProductController extends BaseController
      */
     #[Groups(['Products'])]
     #[Authenticated]
+    #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
     #[UrlParam(name: 'product', type: 'integer', description: 'The ID of the product to update.', example: 5)]
     #[BodyParam(name: 'name', type: 'string', required: false, description: 'The updated product name.', example: 'Premium Coffee Beans')]
     #[BodyParam(name: 'price', type: 'number', required: false, description: 'The updated price.', example: 21.50)]
@@ -146,6 +147,7 @@ class ProductController extends BaseController
      */
     #[Groups(['Products'])]
     #[Authenticated]
+    #[Header(name: 'Authorization', example: 'Bearer your_access_token_here')]
     #[UrlParam(name: 'product', type: 'integer', description: 'The ID of the product to delete.', example: 5)]
     #[Response(
         status: 204,

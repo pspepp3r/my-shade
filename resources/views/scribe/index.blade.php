@@ -102,6 +102,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-v1-products--id-">
                                 <a href="#endpoints-DELETEapi-v1-products--id-">DELETE /products/{product}</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-logout">
+                                <a href="#endpoints-POSTapi-v1-logout">Logout</a>
+                            </li>
                                                                         </ul>
                             </ul>
             </div>
@@ -939,6 +942,7 @@ Requires authentication with a valid Bearer token.</p>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://my-shade.test/api/v1/products" \
+    --header "Authorization: Bearer your_access_token_here" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -949,6 +953,7 @@ Requires authentication with a valid Bearer token.</p>
 );
 
 const headers = {
+    "Authorization": "Bearer your_access_token_here",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -966,6 +971,7 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -981,6 +987,7 @@ import json
 
 url = 'http://my-shade.test/api/v1/products'
 headers = {
+  'Authorization': 'Bearer your_access_token_here',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
@@ -999,22 +1006,22 @@ response.json()</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 9,
+            &quot;id&quot;: 19,
             &quot;name&quot;: &quot;Sunt nihil accusantium.&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis. Omnis nostrum aut adipisci quidem nostrum qui commodi. Iure odit et et modi ipsum nostrum omnis. Et consequatur aut dolores enim.&quot;,
             &quot;price&quot;: &quot;778.67&quot;,
             &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/c71cb930-01f3-381c-9172-e1c70e63388f.jpg&quot;,
-            &quot;owner_id&quot;: 12,
-            &quot;created_at&quot;: &quot;2025-11-17 07:05:20&quot;
+            &quot;owner_id&quot;: 22,
+            &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
         },
         {
-            &quot;id&quot;: 10,
+            &quot;id&quot;: 20,
             &quot;name&quot;: &quot;Distinctio eum doloremque id aut.&quot;,
             &quot;description&quot;: &quot;Veniam corporis dolorem mollitia. Nemo odit quia officia est dignissimos. Blanditiis odio veritatis excepturi doloribus delectus fugit. Repudiandae laboriosam est alias tenetur ratione.&quot;,
             &quot;price&quot;: &quot;190.06&quot;,
             &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/067d00f5-e958-3b01-bc80-7e5e367be869.jpg&quot;,
-            &quot;owner_id&quot;: 13,
-            &quot;created_at&quot;: &quot;2025-11-17 07:05:20&quot;
+            &quot;owner_id&quot;: 23,
+            &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
         }
     ]
 }</code>
@@ -1068,6 +1075,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-products"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -1091,7 +1110,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                        </form>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-v1-products"
+               value="1"
+               data-component="url">
+    <br>
+<p>The page number for pagination. Example: <code>1</code></p>
+            </div>
+                    </form>
 
                     <h2 id="endpoints-POSTapi-v1-products">POST /products</h2>
 
@@ -1109,12 +1141,13 @@ Returns the created product resource.</p>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://my-shade.test/api/v1/products" \
+    --header "Authorization: Bearer your_access_token_here" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "name=Organic Coffee Beans"\
     --form "description=Sourced from high-altitude farms in Colombia."\
     --form "price=19.99"\
-    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpFC9B.tmp" </code></pre></div>
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\php1086.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1123,6 +1156,7 @@ Returns the created product resource.</p>
 );
 
 const headers = {
+    "Authorization": "Bearer your_access_token_here",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -1147,6 +1181,7 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
@@ -1165,7 +1200,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'image',
-                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpFC9B.tmp', 'r')
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\php1086.tmp', 'r')
             ],
         ],
     ]
@@ -1183,13 +1218,14 @@ files = {
   'name': (None, 'Organic Coffee Beans'),
   'description': (None, 'Sourced from high-altitude farms in Colombia.'),
   'price': (None, '19.99'),
-  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpFC9B.tmp', 'rb')}
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\php1086.tmp', 'rb')}
 payload = {
     "name": "Organic Coffee Beans",
     "description": "Sourced from high-altitude farms in Colombia.",
     "price": 19.99
 }
 headers = {
+  'Authorization': 'Bearer your_access_token_here',
   'Content-Type': 'multipart/form-data',
   'Accept': 'application/json'
 }
@@ -1207,13 +1243,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 11,
+        &quot;id&quot;: 21,
         &quot;name&quot;: &quot;Nihil accusantium harum.&quot;,
         &quot;description&quot;: &quot;Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure. Et et modi ipsum nostrum.&quot;,
         &quot;price&quot;: &quot;546.11&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/d34becdc-c0c1-3b29-91d0-b8358c864cf4.jpg&quot;,
-        &quot;owner_id&quot;: 14,
-        &quot;created_at&quot;: &quot;2025-11-17 07:05:21&quot;
+        &quot;owner_id&quot;: 24,
+        &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
     }
 }</code>
  </pre>
@@ -1279,6 +1315,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/v1/products</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-products"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -1350,7 +1398,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpFC9B.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\php1086.tmp</code></p>
         </div>
         </form>
 
@@ -1369,6 +1417,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://my-shade.test/api/v1/products/16" \
+    --header "Authorization: Bearer your_access_token_here" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1379,6 +1428,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer your_access_token_here",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1396,6 +1446,7 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -1411,6 +1462,7 @@ import json
 
 url = 'http://my-shade.test/api/v1/products/16'
 headers = {
+  'Authorization': 'Bearer your_access_token_here',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
@@ -1428,13 +1480,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 12,
+        &quot;id&quot;: 22,
         &quot;name&quot;: &quot;Et animi quos.&quot;,
         &quot;description&quot;: &quot;Fugiat sunt nihil accusantium harum mollitia. Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
         &quot;price&quot;: &quot;123.27&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/fa253524-dd6a-3fdb-a788-0cabcf134db7.jpg&quot;,
-        &quot;owner_id&quot;: 15,
-        &quot;created_at&quot;: &quot;2025-11-17 07:05:21&quot;
+        &quot;owner_id&quot;: 25,
+        &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
     }
 }</code>
  </pre>
@@ -1495,6 +1547,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/v1/products/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-products--id-"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -1561,12 +1625,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
     "http://my-shade.test/api/v1/products/16" \
+    --header "Authorization: Bearer your_access_token_here" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "name=Premium Coffee Beans"\
     --form "description=Eius et animi quos velit et."\
     --form "price=21.5"\
-    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpFEAF.tmp" </code></pre></div>
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\php1123.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1575,6 +1640,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer your_access_token_here",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -1599,6 +1665,7 @@ $response = $client-&gt;put(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
@@ -1617,7 +1684,7 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'image',
-                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpFEAF.tmp', 'r')
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\php1123.tmp', 'r')
             ],
         ],
     ]
@@ -1635,13 +1702,14 @@ files = {
   'name': (None, 'Premium Coffee Beans'),
   'description': (None, 'Eius et animi quos velit et.'),
   'price': (None, '21.5'),
-  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpFEAF.tmp', 'rb')}
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\php1123.tmp', 'rb')}
 payload = {
     "name": "Premium Coffee Beans",
     "description": "Eius et animi quos velit et.",
     "price": 21.5
 }
 headers = {
+  'Authorization': 'Bearer your_access_token_here',
   'Content-Type': 'multipart/form-data',
   'Accept': 'application/json'
 }
@@ -1659,13 +1727,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 13,
+        &quot;id&quot;: 23,
         &quot;name&quot;: &quot;Modi deserunt aut.&quot;,
         &quot;description&quot;: &quot;Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum. Omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
         &quot;price&quot;: &quot;737.91&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/b9567dd8-446c-3a6f-8f1a-54673f212a38.jpg&quot;,
-        &quot;owner_id&quot;: 16,
-        &quot;created_at&quot;: &quot;2025-11-17 07:05:21&quot;
+        &quot;owner_id&quot;: 26,
+        &quot;created_at&quot;: &quot;2025-11-17 07:18:32&quot;
     }
 }</code>
  </pre>
@@ -1730,6 +1798,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/v1/products/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-v1-products--id-"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -1826,7 +1906,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpFEAF.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\php1123.tmp</code></p>
         </div>
         </form>
 
@@ -1845,6 +1925,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
     "http://my-shade.test/api/v1/products/16" \
+    --header "Authorization: Bearer your_access_token_here" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1855,6 +1936,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer your_access_token_here",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1872,6 +1954,7 @@ $response = $client-&gt;delete(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -1887,6 +1970,7 @@ import json
 
 url = 'http://my-shade.test/api/v1/products/16'
 headers = {
+  'Authorization': 'Bearer your_access_token_here',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
@@ -1961,6 +2045,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-v1-products--id-"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -2010,6 +2106,199 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The ID of the product to delete. Example: <code>5</code></p>
             </div>
                     </form>
+
+                    <h2 id="endpoints-POSTapi-v1-logout">Logout</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Logout the currently authenticated user by revoking their access token.</p>
+
+<span id="example-requests-POSTapi-v1-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://my-shade.test/api/v1/logout" \
+    --header "Authorization: Bearer your_access_token_here" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://my-shade.test/api/v1/logout"
+);
+
+const headers = {
+    "Authorization": "Bearer your_access_token_here",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://my-shade.test/api/v1/logout';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://my-shade.test/api/v1/logout'
+headers = {
+  'Authorization': 'Bearer your_access_token_here',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-logout">
+            <blockquote>
+            <p>Example response (200, User successfully logged out.):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Successfully logged out&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, User is not logged in.):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No active session found.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Authentication required.):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, Server error during logout.):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;An error occurred while logging out.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-logout"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-logout">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-logout" data-method="POST"
+      data-path="api/v1/logout"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-logout"
+                    onclick="tryItOut('POSTapi-v1-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-logout"
+                    onclick="cancelTryOut('POSTapi-v1-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-logout"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/logout</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-logout"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
 
             
 
