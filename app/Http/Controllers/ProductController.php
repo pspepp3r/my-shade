@@ -9,7 +9,7 @@ use App\Models\Product;
 use App\Services\ProductService;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Routing\Controller;
 use Knuckles\Scribe\Attributes\{
     Authenticated,
     Header,
@@ -18,10 +18,12 @@ use Knuckles\Scribe\Attributes\{
     UrlParam,
     ResponseFromApiResource
 };
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use PHPUnit\Metadata\Api\Groups;
 
-class ProductController extends BaseController
+class ProductController extends Controller
 {
+    use AuthorizesRequests;
 
     // Inject the service via the constructor for dependency injection
     public function __construct(protected ProductService $productService) {}
@@ -133,7 +135,7 @@ class ProductController extends BaseController
     )]
     public function update(UpdateProductRequest $request, Product $product): JsonResponse
     {
-        // $this->authorize('update', $product);
+        $this->authorize('update', $product);
 
         $product = $this->productService->updateProduct($product, $request->validated());
 
@@ -159,7 +161,7 @@ class ProductController extends BaseController
     )]
     public function destroy(Product $product): JsonResponse
     {
-        // this->authorize('delete', $product);
+        $this->authorize('delete', $product);
 
         $this->productService->deleteProduct($product);
 
