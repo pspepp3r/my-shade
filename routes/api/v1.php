@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 
 Route::prefix('/v1')->group(function(){
     Route::post('/register', [AuthController::class, 'register'])->name('api.v1.register');
@@ -12,6 +13,8 @@ Route::prefix('/v1')->group(function(){
 
     Route::middleware('auth:sanctum')->group(function(){
         Route::apiResource('/products', ProductController::class);
+        Route::apiResource('/posts', PostController::class);
+
         Route::post('/logout', [AuthController::class, 'logout'])->name('api.v1.logout');
     });
 });

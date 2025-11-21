@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Services\ProductService;
-use PHPUnit\Metadata\Api\Groups;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Contracts\Auth\Guard;
-use App\Http\Resources\ProductResource;
-use Knuckles\Scribe\Attributes\Response;
-use Knuckles\Scribe\Attributes\UrlParam;
-use Knuckles\Scribe\Attributes\BodyParam;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use Knuckles\Scribe\Attributes\Authenticated;
+use App\Http\Resources\ProductResource;
+use App\Models\Product;
+use App\Services\ProductService;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
-use Knuckles\Scribe\Attributes\Header;
-use Knuckles\Scribe\Attributes\ResponseFromApiResource;
+use Knuckles\Scribe\Attributes\{
+    Authenticated,
+    Header,
+    BodyParam,
+    Response,
+    UrlParam,
+    ResponseFromApiResource
+};
+use PHPUnit\Metadata\Api\Groups;
 
 class ProductController extends BaseController
 {
