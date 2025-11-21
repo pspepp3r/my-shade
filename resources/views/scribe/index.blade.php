@@ -108,6 +108,15 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-posts">
                                 <a href="#endpoints-POSTapi-v1-posts">POST /posts</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-posts--id-">
+                                <a href="#endpoints-GETapi-v1-posts--id-">GET /posts/{post}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-v1-posts--id-">
+                                <a href="#endpoints-PUTapi-v1-posts--id-">PUT/PATCH /posts/{post}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-v1-posts--id-">
+                                <a href="#endpoints-DELETEapi-v1-posts--id-">DELETE /posts/{post}</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-logout">
                                 <a href="#endpoints-POSTapi-v1-logout">Logout</a>
                             </li>
@@ -1012,22 +1021,22 @@ response.json()</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 9,
+            &quot;id&quot;: 80,
             &quot;name&quot;: &quot;Sunt nihil accusantium.&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis. Omnis nostrum aut adipisci quidem nostrum qui commodi. Iure odit et et modi ipsum nostrum omnis. Et consequatur aut dolores enim.&quot;,
             &quot;price&quot;: &quot;778.67&quot;,
             &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/c71cb930-01f3-381c-9172-e1c70e63388f.jpg&quot;,
-            &quot;owner_id&quot;: 9,
-            &quot;created_at&quot;: &quot;2025-11-21 11:23:20&quot;
+            &quot;owner_id&quot;: 78,
+            &quot;created_at&quot;: &quot;2025-11-21 13:10:40&quot;
         },
         {
-            &quot;id&quot;: 10,
+            &quot;id&quot;: 81,
             &quot;name&quot;: &quot;Distinctio eum doloremque id aut.&quot;,
             &quot;description&quot;: &quot;Veniam corporis dolorem mollitia. Nemo odit quia officia est dignissimos. Blanditiis odio veritatis excepturi doloribus delectus fugit. Repudiandae laboriosam est alias tenetur ratione.&quot;,
             &quot;price&quot;: &quot;190.06&quot;,
             &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/067d00f5-e958-3b01-bc80-7e5e367be869.jpg&quot;,
-            &quot;owner_id&quot;: 10,
-            &quot;created_at&quot;: &quot;2025-11-21 11:23:20&quot;
+            &quot;owner_id&quot;: 79,
+            &quot;created_at&quot;: &quot;2025-11-21 13:10:40&quot;
         }
     ]
 }</code>
@@ -1153,7 +1162,7 @@ Returns the created product resource.</p>
     --form "name=Organic Coffee Beans"\
     --form "description=Sourced from high-altitude farms in Colombia."\
     --form "price=19.99"\
-    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\php924A.tmp" </code></pre></div>
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpF02C.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1206,7 +1215,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'image',
-                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\php924A.tmp', 'r')
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpF02C.tmp', 'r')
             ],
         ],
     ]
@@ -1224,7 +1233,7 @@ files = {
   'name': (None, 'Organic Coffee Beans'),
   'description': (None, 'Sourced from high-altitude farms in Colombia.'),
   'price': (None, '19.99'),
-  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\php924A.tmp', 'rb')}
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpF02C.tmp', 'rb')}
 payload = {
     "name": "Organic Coffee Beans",
     "description": "Sourced from high-altitude farms in Colombia.",
@@ -1249,13 +1258,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 11,
+        &quot;id&quot;: 82,
         &quot;name&quot;: &quot;Nihil accusantium harum.&quot;,
         &quot;description&quot;: &quot;Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure. Et et modi ipsum nostrum.&quot;,
         &quot;price&quot;: &quot;546.11&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/d34becdc-c0c1-3b29-91d0-b8358c864cf4.jpg&quot;,
-        &quot;owner_id&quot;: 11,
-        &quot;created_at&quot;: &quot;2025-11-21 11:23:20&quot;
+        &quot;owner_id&quot;: 80,
+        &quot;created_at&quot;: &quot;2025-11-21 13:10:40&quot;
     }
 }</code>
  </pre>
@@ -1404,7 +1413,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\php924A.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpF02C.tmp</code></p>
         </div>
         </form>
 
@@ -1486,13 +1495,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 12,
+        &quot;id&quot;: 83,
         &quot;name&quot;: &quot;Et animi quos.&quot;,
         &quot;description&quot;: &quot;Fugiat sunt nihil accusantium harum mollitia. Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
         &quot;price&quot;: &quot;123.27&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/fa253524-dd6a-3fdb-a788-0cabcf134db7.jpg&quot;,
-        &quot;owner_id&quot;: 12,
-        &quot;created_at&quot;: &quot;2025-11-21 11:23:20&quot;
+        &quot;owner_id&quot;: 81,
+        &quot;created_at&quot;: &quot;2025-11-21 13:10:40&quot;
     }
 }</code>
  </pre>
@@ -1625,7 +1634,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "name=Premium Coffee Beans"\
     --form "description=Eius et animi quos velit et."\
     --form "price=21.5"\
-    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\php92C8.tmp" </code></pre></div>
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpF185.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1678,7 +1687,7 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'image',
-                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\php92C8.tmp', 'r')
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpF185.tmp', 'r')
             ],
         ],
     ]
@@ -1696,7 +1705,7 @@ files = {
   'name': (None, 'Premium Coffee Beans'),
   'description': (None, 'Eius et animi quos velit et.'),
   'price': (None, '21.5'),
-  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\php92C8.tmp', 'rb')}
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpF185.tmp', 'rb')}
 payload = {
     "name": "Premium Coffee Beans",
     "description": "Eius et animi quos velit et.",
@@ -1721,13 +1730,13 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 13,
+        &quot;id&quot;: 84,
         &quot;name&quot;: &quot;Modi deserunt aut.&quot;,
         &quot;description&quot;: &quot;Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum. Omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
         &quot;price&quot;: &quot;737.91&quot;,
         &quot;image_url&quot;: &quot;http://my-shade.test/storage/products/b9567dd8-446c-3a6f-8f1a-54673f212a38.jpg&quot;,
-        &quot;owner_id&quot;: 13,
-        &quot;created_at&quot;: &quot;2025-11-21 11:23:20&quot;
+        &quot;owner_id&quot;: 82,
+        &quot;created_at&quot;: &quot;2025-11-21 13:10:40&quot;
     }
 }</code>
  </pre>
@@ -1888,7 +1897,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\php92C8.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpF185.tmp</code></p>
         </div>
         </form>
 
@@ -2157,16 +2166,16 @@ response.json()</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 4,
+            &quot;id&quot;: 37,
             &quot;content&quot;: &quot;Et animi quos velit et fugiat.&quot;,
-            &quot;product_id&quot;: 14,
-            &quot;updated_at&quot;: &quot;2025-11-21 11:23:20&quot;
+            &quot;product_id&quot;: 85,
+            &quot;updated_at&quot;: &quot;2025-11-21 13:10:40&quot;
         },
         {
-            &quot;id&quot;: 5,
+            &quot;id&quot;: 38,
             &quot;content&quot;: &quot;Veniam corporis dolorem mollitia.&quot;,
-            &quot;product_id&quot;: 15,
-            &quot;updated_at&quot;: &quot;2025-11-21 11:23:20&quot;
+            &quot;product_id&quot;: 86,
+            &quot;updated_at&quot;: &quot;2025-11-21 13:10:40&quot;
         }
     ]
 }</code>
@@ -2287,13 +2296,11 @@ Returns the created post resource.</p>
     <pre><code class="language-bash">curl --request POST \
     "http://my-shade.test/api/v1/posts" \
     --header "Authorization: Bearer your_access_token_here" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"content\": \"Check out this way to make your coffee\",
-    \"image\": \"architecto\"
-}"
-</code></pre></div>
+    --form "content=Check out this way to make your coffee"\
+    --form "product_id=14"\
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpF270.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2303,19 +2310,19 @@ Returns the created post resource.</p>
 
 const headers = {
     "Authorization": "Bearer your_access_token_here",
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "content": "Check out this way to make your coffee",
-    "image": "architecto"
-};
+const body = new FormData();
+body.append('content', 'Check out this way to make your coffee');
+body.append('product_id', '14');
+body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 
@@ -2327,12 +2334,22 @@ $response = $client-&gt;post(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer your_access_token_here',
-            'Content-Type' =&gt; 'application/json',
+            'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
-        'json' =&gt; [
-            'content' =&gt; 'Check out this way to make your coffee',
-            'image' =&gt; 'architecto',
+        'multipart' =&gt; [
+            [
+                'name' =&gt; 'content',
+                'contents' =&gt; 'Check out this way to make your coffee'
+            ],
+            [
+                'name' =&gt; 'product_id',
+                'contents' =&gt; '14'
+            ],
+            [
+                'name' =&gt; 'image',
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpF270.tmp', 'r')
+            ],
         ],
     ]
 );
@@ -2345,17 +2362,21 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://my-shade.test/api/v1/posts'
+files = {
+  'content': (None, 'Check out this way to make your coffee'),
+  'product_id': (None, '14'),
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpF270.tmp', 'rb')}
 payload = {
     "content": "Check out this way to make your coffee",
-    "image": "architecto"
+    "product_id": "14"
 }
 headers = {
   'Authorization': 'Bearer your_access_token_here',
-  'Content-Type': 'application/json',
+  'Content-Type': 'multipart/form-data',
   'Accept': 'application/json'
 }
 
-response = requests.request('POST', url, headers=headers, json=payload)
+response = requests.request('POST', url, headers=headers, files=files)
 response.json()</code></pre></div>
 
 </span>
@@ -2368,10 +2389,10 @@ response.json()</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 6,
+        &quot;id&quot;: 39,
         &quot;content&quot;: &quot;Et animi quos velit et fugiat.&quot;,
-        &quot;product_id&quot;: 16,
-        &quot;updated_at&quot;: &quot;2025-11-21 11:23:20&quot;
+        &quot;product_id&quot;: 87,
+        &quot;updated_at&quot;: &quot;2025-11-21 13:10:40&quot;
     }
 }</code>
  </pre>
@@ -2408,7 +2429,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-v1-posts" data-method="POST"
       data-path="api/v1/posts"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-posts', this);">
@@ -2456,10 +2477,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-v1-posts"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -2487,18 +2508,653 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The post content. Example: <code>Check out this way to make your coffee</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="image"                data-endpoint="POSTapi-v1-posts"
-               value="architecto"
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="product_id"                data-endpoint="POSTapi-v1-posts"
+               value="14"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>The product being posted about content. Example: <code>14</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="image"                data-endpoint="POSTapi-v1-posts"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpF270.tmp</code></p>
         </div>
         </form>
+
+                    <h2 id="endpoints-GETapi-v1-posts--id-">GET /posts/{post}</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Fetches the details for a single post using its ID.</p>
+
+<span id="example-requests-GETapi-v1-posts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://my-shade.test/api/v1/posts/16" \
+    --header "Authorization: Bearer your_access_token_here" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://my-shade.test/api/v1/posts/16"
+);
+
+const headers = {
+    "Authorization": "Bearer your_access_token_here",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://my-shade.test/api/v1/posts/16';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://my-shade.test/api/v1/posts/16'
+headers = {
+  'Authorization': 'Bearer your_access_token_here',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-posts--id-">
+            <blockquote>
+            <p>Example response (200, The requested post resource.):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 40,
+        &quot;content&quot;: &quot;Et animi quos velit et fugiat.&quot;,
+        &quot;product_id&quot;: 88,
+        &quot;updated_at&quot;: &quot;2025-11-21 13:10:40&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Post not found.):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Post] 404&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-posts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-posts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-posts--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-posts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-posts--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-posts--id-" data-method="GET"
+      data-path="api/v1/posts/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-posts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-posts--id-"
+                    onclick="tryItOut('GETapi-v1-posts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-posts--id-"
+                    onclick="cancelTryOut('GETapi-v1-posts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-posts--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/posts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-posts--id-"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-posts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-posts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-posts--id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the post. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PUTapi-v1-posts--id-">PUT/PATCH /posts/{post}</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Modifies the details of an existing post. Requires user to be the owner.</p>
+
+<span id="example-requests-PUTapi-v1-posts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://my-shade.test/api/v1/posts/16" \
+    --header "Authorization: Bearer your_access_token_here" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "content=Updated: new way to make your coffee"\
+    --form "image=@C:\Users\AFAM SYS\AppData\Local\Temp\phpF30E.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://my-shade.test/api/v1/posts/16"
+);
+
+const headers = {
+    "Authorization": "Bearer your_access_token_here",
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('content', 'Updated: new way to make your coffee');
+body.append('image', document.querySelector('input[name="image"]').files[0]);
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://my-shade.test/api/v1/posts/16';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
+            'Content-Type' =&gt; 'multipart/form-data',
+            'Accept' =&gt; 'application/json',
+        ],
+        'multipart' =&gt; [
+            [
+                'name' =&gt; 'content',
+                'contents' =&gt; 'Updated: new way to make your coffee'
+            ],
+            [
+                'name' =&gt; 'image',
+                'contents' =&gt; fopen('C:\Users\AFAM SYS\AppData\Local\Temp\phpF30E.tmp', 'r')
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://my-shade.test/api/v1/posts/16'
+files = {
+  'content': (None, 'Updated: new way to make your coffee'),
+  'image': open('C:\Users\AFAM SYS\AppData\Local\Temp\phpF30E.tmp', 'rb')}
+payload = {
+    "content": "Updated: new way to make your coffee"
+}
+headers = {
+  'Authorization': 'Bearer your_access_token_here',
+  'Content-Type': 'multipart/form-data',
+  'Accept': 'application/json'
+}
+
+response = requests.request('PUT', url, headers=headers, files=files)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-v1-posts--id-">
+            <blockquote>
+            <p>Example response (200, The updated post resource.):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 41,
+        &quot;content&quot;: &quot;Et animi quos velit et fugiat.&quot;,
+        &quot;product_id&quot;: 89,
+        &quot;updated_at&quot;: &quot;2025-11-21 13:10:41&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Forbidden (Not the post owner).):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-v1-posts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-v1-posts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-v1-posts--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-v1-posts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-v1-posts--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-v1-posts--id-" data-method="PUT"
+      data-path="api/v1/posts/{id}"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-posts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-v1-posts--id-"
+                    onclick="tryItOut('PUTapi-v1-posts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-v1-posts--id-"
+                    onclick="cancelTryOut('PUTapi-v1-posts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-v1-posts--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/v1/posts/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/v1/posts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-v1-posts--id-"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-v1-posts--id-"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-v1-posts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-v1-posts--id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the post. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>content</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="content"                data-endpoint="PUTapi-v1-posts--id-"
+               value="Updated: new way to make your coffee"
+               data-component="body">
+    <br>
+<p>The updated post content. Example: <code>Updated: new way to make your coffee</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="image"                data-endpoint="PUTapi-v1-posts--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\AFAM SYS\AppData\Local\Temp\phpF30E.tmp</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-v1-posts--id-">DELETE /posts/{post}</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Permanently removes a post from the database. Requires user to be the owner.</p>
+
+<span id="example-requests-DELETEapi-v1-posts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://my-shade.test/api/v1/posts/16" \
+    --header "Authorization: Bearer your_access_token_here" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://my-shade.test/api/v1/posts/16"
+);
+
+const headers = {
+    "Authorization": "Bearer your_access_token_here",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://my-shade.test/api/v1/posts/16';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer your_access_token_here',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://my-shade.test/api/v1/posts/16'
+headers = {
+  'Authorization': 'Bearer your_access_token_here',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('DELETE', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-posts--id-">
+            <blockquote>
+            <p>Example response (204, No Content (Post successfully deleted).):</p>
+        </blockquote>
+                <pre>
+<code>Empty response</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Forbidden (Not the post owner).):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-v1-posts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-posts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-posts--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-posts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-posts--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-v1-posts--id-" data-method="DELETE"
+      data-path="api/v1/posts/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-posts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-posts--id-"
+                    onclick="tryItOut('DELETEapi-v1-posts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-posts--id-"
+                    onclick="cancelTryOut('DELETEapi-v1-posts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-posts--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/posts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-v1-posts--id-"
+               value="Bearer your_access_token_here"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer your_access_token_here</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-v1-posts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-v1-posts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-v1-posts--id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the post. Example: <code>16</code></p>
+            </div>
+                    </form>
 
                     <h2 id="endpoints-POSTapi-v1-logout">Logout</h2>
 

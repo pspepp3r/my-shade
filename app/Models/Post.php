@@ -14,7 +14,7 @@ class Post extends Model
     protected $fillable = [
         'product_id',
         'content',
-        'image',
+        'image_path',
         'likes'
     ];
 

@@ -14,8 +14,22 @@ class PostService
         return Post::paginate();
     }
 
-    public function createPost(array $data)
+    public function createPost(array $data): Post
     {
-        return true;
+        return Post::create($data);
+    }
+
+    public function updatePost(Post $post, array $data): Post
+    {
+        $post->update($data);
+        return $post;
+    }
+
+    /**
+     * Delete a post.
+     */
+    public function deletePost(Post $post): bool
+    {
+        return $post->delete();
     }
 }

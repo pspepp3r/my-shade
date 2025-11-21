@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
-// use App\Http\Requests\UpdatePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Services\PostService;
-use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
 use Knuckles\Scribe\Attributes\{
     Authenticated,
     Header,
@@ -21,8 +23,10 @@ use Knuckles\Scribe\Attributes\{
 };
 use PHPUnit\Metadata\Api\Groups;
 
-class PostController
+class PostController extends Controller
 {
+    use AuthorizesRequests, ValidatesRequests;
+
     public function __construct(private readonly PostService $postService) {}
 
     /**
@@ -60,7 +64,8 @@ class PostController
         Groups(['Posts']),
         Authenticated,
         Header(name: 'Authorization', example: 'Bearer your_access_token_here'),
-        BodyParam(name: 'content', type: 'string', required: true, description: 'The post content.', example: 'Check out this way to make your coffee'),
+        BodyParam(name: 'content', type: 'string', description: 'The post content.', example: 'Check out this way to make your coffee'),
+        BodyParam(name: 'product_id', type: 'number', description: 'The product being posted about content.', example: '14'),
         ResponseFromApiResource(
             name: PostResource::class,
             model: Post::class,
@@ -73,10 +78,9 @@ class PostController
             description: 'Validation failed.'
         )
     ]
-    public function store(StorePostRequest $request, Guard $auth): JsonResponse
+    public function store(StorePostRequest $request): JsonResponse
     {
         $data = $request->validated();
-        $data['user_id'] = $auth->id();
 
         $post = $this->postService->createPost($data);
 
@@ -84,90 +88,86 @@ class PostController
         return (new PostResource($post))->response()->setStatusCode(201);
     }
 
-    // /**
-    //  * GET /posts/{post}
-    //  *
-    //  * Fetches the details for a single post using its ID.
-    //  */
-    // #[
-    //     Groups(['Posts']),
-    //     Authenticated,
-    //     Header(name: 'Authorization', example: 'Bearer your_access_token_here'),
-    //     ResponseFromApiResource(
-    //         name: PostResource::class,
-    //         model: Post::class,
-    //         status: 200,
-    //         description: 'The requested post resource.'
-    //     ),
-    //     Response(
-    //         content: ['message' => 'No query results for model [App\\Models\\Post] 404'],
-    //         status: 404,
-    //         description: 'Post not found.'
-    //     )
-    // ]
-    // public function show(Post $post): JsonResponse
-    // {
-    //     // The Post model is automatically resolved (Route Model Binding)
-    //     return (new PostResource($post))->response();
-    // }
+    /**
+     * GET /posts/{post}
+     *
+     * Fetches the details for a single post using its ID.
+     */
+    #[
+        Groups(['Posts']),
+        Authenticated,
+        Header(name: 'Authorization', example: 'Bearer your_access_token_here'),
+        ResponseFromApiResource(
+            name: PostResource::class,
+            model: Post::class,
+            status: 200,
+            description: 'The requested post resource.'
+        ),
+        Response(
+            content: ['message' => 'No query results for model [App\\Models\\Post] 404'],
+            status: 404,
+            description: 'Post not found.'
+        )
+    ]
+    public function show(Post $post): JsonResponse
+    {
+        return (new PostResource($post))->response();
+    }
 
-    // /**
-    //  * PUT/PATCH /posts/{post}
-    //  *
-    //  * Modifies the details of an existing post. Requires user to be the owner.
-    //  */
-    // #[
-    //     Groups(['Posts']),
-    //     Authenticated,
-    //     Header(name: 'Authorization', example: 'Bearer your_access_token_here'),
-    //     BodyParam(name: 'name', type: 'string', required: false, description: 'The updated post name.', example: 'Premium Coffee Beans'),
-    //     BodyParam(name: 'price', type: 'number', required: false, description: 'The updated price.', example: 21.50),
-    //     ResponseFromApiResource(
-    //         name: PostResource::class,
-    //         model: Post::class,
-    //         status: 200,
-    //         description: 'The updated post resource.'
-    //     ),
-    //     Response(
-    //         content: ['message' => 'This action is unauthorized.'],
-    //         status: 403,
-    //         description: 'Forbidden (Not the post owner).'
-    //     )
-    // ]
-    // public function update(UpdateProductRequest $request, Post $post): JsonResponse
-    // {
-    //     // $this->authorize('update', $post);
+    /**
+     * PUT/PATCH /posts/{post}
+     *
+     * Modifies the details of an existing post. Requires user to be the owner.
+     */
+    #[
+        Groups(['Posts']),
+        Authenticated,
+        Header(name: 'Authorization', example: 'Bearer your_access_token_here'),
+        BodyParam(name: 'content', type: 'string', description: 'The updated post content.', example: 'Updated: new way to make your coffee'),
+        ResponseFromApiResource(
+            name: PostResource::class,
+            model: Post::class,
+            status: 200,
+            description: 'The updated post resource.'
+        ),
+        Response(
+            content: ['message' => 'This action is unauthorized.'],
+            status: 403,
+            description: 'Forbidden (Not the post owner).'
+        )
+    ]
+    public function update(UpdatePostRequest $request, Post $post): JsonResponse
+    {
+        $post = $this->postService->updatePost($post, $request->validated());
 
-    //     $post = $this->postService->updateProduct($post, $request->validated());
+        return (new PostResource($post))->response();
+    }
 
-    //     return (new PostResource($post))->response();
-    // }
+    /**
+     * DELETE /posts/{post}
+     *
+     * Permanently removes a post from the database. Requires user to be the owner.
+     */
+    #[
+        Groups(['Posts']),
+        Authenticated,
+        Header(name: 'Authorization', example: 'Bearer your_access_token_here'),
+        Response(
+            status: 204,
+            description: 'No Content (Post successfully deleted).'
+        ),
+        Response(
+            content: ['message' => 'This action is unauthorized.'],
+            status: 403,
+            description: 'Forbidden (Not the post owner).'
+        )
+    ]
+    public function destroy(Post $post)
+    {
+        $this->authorize('delete', $post);
 
-    // /**
-    //  * DELETE /posts/{post}
-    //  *
-    //  * Permanently removes a post from the database. Requires user to be the owner.
-    //  */
-    // #[
-    //     Groups(['Posts']),
-    //     Authenticated,
-    //     Header(name: 'Authorization', example: 'Bearer your_access_token_here'),
-    //     Response(
-    //         status: 204,
-    //         description: 'No Content (Post successfully deleted).'
-    //     ),
-    //     Response(
-    //         content: ['message' => 'This action is unauthorized.'],
-    //         status: 403,
-    //         description: 'Forbidden (Not the post owner).'
-    //     )
-    // ]
-    // public function destroy(Post $post): JsonResponse
-    // {
-    //     // this->authorize('delete', $post);
+        $this->postService->deletePost($post);
 
-    //     $this->postService->deleteProduct($post);
-
-    //     return response()->json(null, 204); // 204 No Content for successful deletion
-    // }
+        return response()->json(null, 204);
+    }
 }

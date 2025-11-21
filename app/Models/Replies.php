@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Replies extends Model
 {
-    protected array $fillable = [
+    protected $fillable = [
         'content_id',
         'content'
     ];

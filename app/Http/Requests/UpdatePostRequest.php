@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\ValidationRule;
 
-class StorePostRequest extends FormRequest
+class UpdatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->user()->can('update', $this->route('post'));
     }
 
     /**
@@ -25,9 +23,8 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'content' => 'required|string|max:255',
-            'product_id' => 'required|integer|unique:posts,product_id',
-            'image' => 'nullable|image|max:2048',
+            'content' => 'sometimes|required|string|max:255',
+            'image' => 'sometimes|nullable|image|max:2048',
         ];
     }
 }

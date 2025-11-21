@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
-    protected array $fillable = [
+    protected $fillable = [
         'post_id',
         'content'
     ];
